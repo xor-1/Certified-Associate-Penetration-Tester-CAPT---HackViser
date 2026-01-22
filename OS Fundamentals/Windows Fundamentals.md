@@ -207,3 +207,127 @@ You can:
 
 ---
 
+## User Account Control (UAC)
+
+**UAC (User Account Control)** is a Windows security feature that asks for user confirmation before performing actions that require administrative privileges.
+
+### Purpose
+
+- Prevent unauthorized system changes
+    
+- Protect against malware installation
+    
+- Reduce accidental system damage
+    
+
+### How It Works
+
+When a program tries to:
+
+- Install software
+    
+- Change system settings
+    
+- Modify protected files
+    
+
+➡ UAC prompts user to **Allow or Deny**.
+
+### UAC Levels (High → Low)
+
+1. **Always Notify** – Most secure
+    
+2. **Notify for programs only (Default)** – Balanced security
+    
+3. **Notify without dim desktop** – Less secure
+    
+4. **Never Notify** – UAC disabled (Unsafe)
+    
+
+### Advantages
+
+- Improves system security
+    
+- Prevents unauthorized changes
+    
+- User controls admin actions
+    
+
+### Disadvantages
+
+- Frequent prompts can be annoying
+    
+- Some apps may not work properly
+    
+
+### One-Line Summary
+
+> UAC protects Windows by requiring user approval before executing administrative actions.
+
+---
+
+## Microsoft Windows — Overview
+
+**Microsoft Windows** is a widely used operating system for personal and corporate computers and a major target for malware and attackers.
+
+### Windows History (Timeline)
+
+- **1985 – Windows 1.0:** GUI over MS-DOS, low success
+    
+- **1987 – Windows 2.0:** Word & Excel increased adoption
+    
+- **1990 – Windows 3.0:** First major success
+    
+- **2001 – Windows XP:** Merged NT + DOS lines, very popular
+    
+- **2006 – Vista:** Innovations but poor adoption
+    
+- **2009 – Windows 7:** Stable successor
+    
+- **2012 – Windows 8.x:** Short lifespan
+    
+- **2015 – Windows 10:** Widely adopted
+    
+- **2021+ – Windows 11:** Current version
+    
+- **Server version:** Windows Server 2025
+    
+
+👉 Training focuses on **Windows 10** due to popularity.
+
+### Accessing Windows
+
+#### Local Access
+
+- Physical access to the computer
+    
+- Login using local credentials
+    
+#### Remote Access
+
+- Uses **RDP (Remote Desktop Protocol)**
+    
+- Allows remote control over network
+    
+- Example client: **Remmina**
+    
+### Windows Interface
+
+Windows interface enables users to manage programs, files, and settings.
+
+#### Main Components
+
+- **Desktop:** Main working area
+    
+- **Start Menu:** Access apps & system tools
+    
+- **Search Box:** Find files, apps, settings
+    
+- **Taskbar:** Shows running apps & notifications
+    
+### One-Line Summary
+
+> Windows is a GUI-based operating system with a long evolution, widely used in home and enterprise environments, and commonly accessed locally or via RDP.
+
+---
+
