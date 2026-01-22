@@ -331,3 +331,430 @@ Windows interface enables users to manage programs, files, and settings.
 
 ---
 
+## Windows Services & Processes
+
+### Services
+
+- Background programs performing system tasks
+    
+- Start/stop automatically
+    
+- Examples: updates, networking, printing
+    
+
+### Processes
+
+- Running instances of programs/services
+    
+- Consume CPU, memory, disk, network
+    
+- Can be viewed and terminated in Task Manager
+    
+
+## Task Manager
+
+Used to monitor performance and manage system activity.  
+Shortcut: **Ctrl + Shift + Esc**
+
+### Tabs
+
+- **Processes:** View & terminate running programs/services
+    
+- **Performance:** CPU, RAM, Disk, Network graphs
+    
+- **App History:** Resource usage history of apps
+    
+- **Startup:** Manage boot startup programs
+    
+- **Users:** Logged-in user sessions
+    
+- **Details:** Advanced process info
+    
+- **Services:** Start/stop/configure services
+
+## Resource Monitor
+
+Advanced performance monitoring tool.
+
+### Sections
+
+- **Overview:** System summary
+    
+- **CPU:** Per-process CPU usage
+    
+- **Memory:** RAM usage details
+    
+- **Disk:** File & disk activity
+    
+- **Network:** Data sent/received
+    
+
+Used to identify performance bottlenecks and misbehaving applications.
+
+## Sysinternals Suite
+
+Free Microsoft toolset for advanced Windows analysis.  
+Founded in 1996 → acquired by Microsoft in 2006.
+
+### Important Tools:-
+
+### Process Explorer
+
+- Shows handles, DLLs, child processes
+    
+- Identifies which process is using a file
+    
+- Helps detect orphan handles & hidden activity
+    
+### Autoruns
+
+- Displays all startup programs & services
+    
+- Used to remove persistence mechanisms
+    
+### DiskMon
+
+- Monitors real-time disk read/write activity
+    
+# One-Line Summary
+
+> Services run in background, processes execute programs, Task Manager and Sysinternals tools help analyze and control system behavior.
+
+---
+
+## Configuring Windows
+
+Users configure Windows for personalization, troubleshooting, and optimization.
+
+### Settings vs Control Panel
+
+#### Settings
+
+- Modern configuration tool
+    
+- User-friendly interface
+    
+- Frequently updated
+    
+- Quick access to options
+    
+
+#### Control Panel
+
+- Legacy configuration tool
+    
+- Classic folder-based structure
+    
+- More detailed control
+    
+- Gradually replaced by Settings
+    
+
+### System Configuration (MSConfig)
+
+Used to manage startup and system configuration.
+
+#### Tabs
+
+**General**
+
+- Normal
+    
+- Diagnostic
+    
+- Selective
+    
+
+**Boot**
+
+- Boot options (e.g., Safeboot)
+    
+
+**Services**
+
+- Enable/disable services
+    
+
+**Startup**
+
+- Redirects to Task Manager
+    
+
+**Tools**
+
+- Access advanced system utilities
+    
+
+### Registry Editor (Regedit)
+
+- Registry = Windows configuration database
+    
+- Stores OS and application settings
+    
+- Regedit allows viewing/editing registry
+    
+- Incorrect changes can break system stability
+    
+
+### Local Group Policy
+
+- Manages security and system rules for a **single computer**
+    
+- Controls user rights and security policies
+    
+
+### GPO (Domain)
+
+- Centrally manages multiple computers
+    
+- Used in enterprise networks
+    
+
+## One-Line Summary
+
+> Windows configuration is managed using Settings, Control Panel, MSConfig, Registry, and Group Policy tools.
+
+---
+## Command Line Interface (CLI)
+
+Windows can be controlled using keyboard commands instead of graphical interface.
+
+### Command Prompt (CMD)
+
+Text-based command interpreter in Windows.
+
+### Uses
+
+- File management
+    
+- System configuration
+    
+- Network troubleshooting
+    
+- Program execution
+    
+
+#### Example Commands
+
+```
+tasklist   → shows running processes
+whoami     → shows current user
+cls        → clears screen
+```
+
+Commands can accept parameters.
+
+### PowerShell
+
+Advanced CLI and scripting language by Microsoft.
+
+#### Features
+
+- More powerful than CMD
+    
+- Based on .NET Framework
+    
+- Object-oriented command processing
+    
+- Uses **cmdlets** (small functional commands)
+    
+- Supports automation via scripts (*.ps1)
+    
+- Backward compatible with CMD
+    
+
+Microsoft recommends PowerShell over CMD.
+
+#### Example Commands
+
+```
+ipconfig     → shows network configuration
+ipconfig -?  → shows help options
+```
+
+### Key Difference
+
+> CMD is text-based command execution, PowerShell is object-based automation platform.
+
+### One-Line Summary
+
+> PowerShell is the modern, powerful replacement of CMD for Windows command-line management and automation.
+
+---
+
+## Ensuring Device Security (Windows)
+
+### Microsoft Defender Device Security
+
+#### Core Isolation
+
+- Uses virtualization to protect system processes
+    
+- Isolates critical OS components from malware
+    
+
+#### Memory Integrity
+
+- Blocks unauthorized memory modification
+    
+- Prevents kernel-level malware attacks
+    
+
+### Security Processor (TPM)
+
+**TPM (Trusted Platform Module)** is a hardware security chip used to:
+
+- Store encryption keys
+    
+- Protect biometric data
+    
+- Support BitLocker & Windows Hello
+    
+
+## Next-Generation Security
+
+### BitLocker
+
+- Full disk encryption technology
+    
+- Protects data from physical theft
+    
+- Requires encryption key for access
+    
+- Supports internal & removable drives
+    
+
+### Windows Hello
+
+- Passwordless authentication
+    
+- Uses face, fingerprint, iris, or PIN
+    
+- More secure than passwords
+    
+
+### Security Key (FIDO2)
+
+- Physical authentication device
+    
+- Supports 2FA or passwordless login
+    
+- Generates unique cryptographic key pair
+    
+- Prevents phishing-based attacks
+    
+
+## One-Line Summary
+
+> Windows protects devices using virtualization, hardware security, encryption, biometrics, and passwordless authentication.
+
+---
+
+## Ensuring Windows Security
+
+### Windows Updates
+
+Microsoft updates include:
+
+- **Security patches** – fix vulnerabilities
+    
+- **Bug fixes** – improve stability
+    
+- **New features** – enhance OS
+    
+
+📅 Released on **Patch Tuesday** (2nd Tuesday each month)  
+⚠ Urgent updates may be released anytime.
+
+## Windows Security
+
+Central security application in Windows.
+
+### Virus & Threat Protection
+
+Provides real-time protection against malware, spyware, and threats.
+
+#### Scan Options
+
+- **Quick Scan** – fast, basic check
+    
+- **Full Scan** – entire system
+    
+- **Custom Scan** – selected files
+    
+- **Offline Scan** – runs before Windows loads
+    
+
+#### Protection Settings
+
+- **Real-Time Protection:** Continuous monitoring
+    
+- **Cloud Protection:** Latest threat intelligence
+    
+- **Sample Submission:** Sends suspicious files
+    
+- **Tamper Protection:** Blocks setting changes
+    
+- **Controlled Folder Access:** Ransomware protection
+    
+- **Exclusions:** Ignore selected files/folders
+    
+- **Notifications:** Security alerts
+    
+
+### Account Protection
+
+Manages Windows Hello and security key authentication.
+
+### Firewall & Network Protection
+
+Controls Defender Firewall for:
+
+- Domain network
+    
+- Private network
+    
+- Public network
+    
+
+#### Options
+
+- Allow app through firewall
+    
+- Troubleshoot network
+    
+- Notification settings
+    
+- Advanced rules (inbound/outbound)
+    
+- Reset firewall to default
+    
+
+### App & Browser Control
+
+Protects from malicious apps, files, and websites.
+
+#### Reputation-Based Protection
+
+- Uses Microsoft threat intelligence
+    
+
+#### Exploit Protection
+
+- Blocks known attack techniques
+    
+- Protects against zero-day exploits
+    
+- Works at OS or application level
+    
+
+### One-Line Summary
+
+> Windows Security combines updates, antivirus, firewall, exploit protection, and reputation systems to defend against modern threats.
+
+---
+
+>Till now I have completed the Windows Fundamentals module in OS Fundamentals, next we will move on to the "Using Windows Command Line".
+
+
+
