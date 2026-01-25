@@ -490,3 +490,495 @@ Select-String -Pattern "today" file.txt
 
 ---
 
+## User Management with PowerShell
+
+PowerShell allows managing **users, groups, passwords, and permissions** on local machines and Active Directory (AD).
+
+### Active Directory (AD) Overview
+
+- Centralized directory service (Windows Server)
+    
+- Manages users, computers, groups, printers, apps
+    
+- Enforces:
+    
+    - Password policies
+        
+    - Access control
+        
+    - Group Policies (GPOs)
+        
+- Scales from small to enterprise networks
+    
+
+### RSAT (Remote Server Administration Tools)
+
+- Enables remote Windows Server management
+    
+- Provides GUI tools + PowerShell cmdlets
+    
+- Required for AD cmdlets on client machines
+    
+
+#### RSAT Installation
+
+```
+Settings → Apps → Optional features → Add feature → RSAT → Install
+```
+
+### Why User & Group Enumeration Matters
+
+- Detect excessive privileges
+    
+- Identify misconfigurations
+    
+- Find unauthorized group members
+    
+
+⚠ Requires **Administrator privileges**
+
+## Local User Management
+
+#### Get-LocalUser
+
+- Lists local users
+    
+
+```
+Get-LocalUser
+```
+
+#### New-LocalUser
+
+- Creates local user
+    
+
+```
+New-LocalUser -Name "j.doe" -Password (ConvertTo-SecureString "password123" -AsPlainText -Force)
+```
+
+#### Set-LocalUser
+
+- Modifies user properties
+    
+
+```
+Set-LocalUser -Name "j.doe" -Description "Test user"
+```
+
+#### Disable / Enable User
+
+```
+Disable-LocalUser -Name "j.doe"
+Enable-LocalUser -Name "j.doe"
+```
+
+#### Remove-LocalUser
+
+```
+Remove-LocalUser -Name "j.doe"
+```
+
+## Local Group Management
+
+#### Get-LocalGroup
+
+```
+Get-LocalGroup
+```
+
+#### New-LocalGroup
+
+```
+New-LocalGroup -Name "Students"
+```
+
+#### Set-LocalGroup
+
+```
+Set-LocalGroup -Name "Students" -Description "Improvise. Adapt. Overcome."
+```
+
+#### Add / Remove Group Members
+
+```
+Add-LocalGroupMember -Group "Students" -Member "j.doe"
+Remove-LocalGroupMember -Group "Students" -Member "j.doe"
+```
+
+#### Remove-LocalGroup
+
+```
+Remove-LocalGroup -Name "Students"
+```
+
+## Active Directory User Management
+
+#### Get-ADUser
+
+```
+Get-ADUser "j.doe"
+Get-ADUser -Filter *
+```
+
+#### New-ADUser
+
+```
+New-ADUser -Name "j.doe" -SamAccountName j.doe -AccountPassword (ConvertTo-SecureString "sifre123!" -AsPlainText -Force)
+```
+
+#### Set-ADUser
+
+```
+Set-ADUser -Identity "j.doe" -Surname "doe"
+```
+
+#### Remove-ADUser
+
+```
+Remove-ADUser "j.doe"
+```
+
+## Active Directory Group Management
+
+#### Get-ADGroup
+
+```
+Get-ADGroup "Students"
+Get-ADGroup -Filter *
+```
+
+#### New-ADGroup
+
+```
+New-ADGroup -Name "Students" -GroupScope Universal
+```
+
+#### Set-ADGroup
+
+```
+Set-ADGroup -Identity "Students" -Description "Learn as if you were to live forever"
+```
+
+#### Group Membership
+
+```
+Get-ADGroupMember -Identity "Students"
+Add-ADGroupMember -Identity "Students" -Members j.doe
+Remove-ADGroupMember -Identity "Students" -Member j.doe
+```
+
+#### Remove-ADGroup
+
+```
+Remove-ADGroup "Students"
+```
+
+### Core Security Insight
+
+> User and group misconfigurations are one of the **most exploited attack vectors** in Windows environments.
+
+---
+
+## PowerShell & Network Connections
+
+PowerShell provides cmdlets and legacy tools to view, test, and manage network configurations.
+
+### Gathering Network Information
+
+#### Get-NetIPAddress
+
+- Displays IP configuration of network interfaces
+    
+
+```
+Get-NetIPAddress
+```
+
+#### IPConfig (Legacy CMD Tool)
+
+- Shows IP address, subnet mask, gateway, DNS
+    
+
+```
+ipconfig
+```
+
+### Viewing Network Connections
+
+#### Netstat
+
+- Displays active network connections
+    
+- Shows protocol, local/remote address, state
+    
+
+```
+netstat
+```
+
+### DNS Queries
+
+#### Nslookup
+
+- Resolves domain names to IP addresses
+    
+
+```
+nslookup example.com
+```
+
+### ARP Cache
+
+#### ARP
+
+- Maps IP addresses to MAC addresses
+    
+- Displays ARP table
+    
+
+```
+arp -a
+```
+
+### Testing Connectivity
+
+#### Test-NetConnection
+
+- Tests network connectivity (ping & port checks)
+    
+
+```
+Test-NetConnection
+```
+
+### Downloading Files
+
+#### Invoke-WebRequest
+
+- Sends HTTP/HTTPS requests
+    
+- Downloads web content
+    
+
+```
+Invoke-WebRequest -Uri "<URL>" -OutFile "file.ext"
+```
+
+Example:
+
+```
+Invoke-WebRequest -Uri "https://upload.wikimedia.org/...png" -OutFile "powershell.png"
+```
+
+### Core Security Insight
+
+> Network commands are heavily used in **enumeration, troubleshooting, and attacker reconnaissance**.
+
+---
+
+## Retrieving Information with PowerShell
+
+PowerShell is used to enumerate **system, update, security, and file information**.
+
+### System Information
+
+#### Get-ComputerInfo
+
+- Displays OS, hardware, BIOS, and system details
+    
+
+```
+Get-ComputerInfo
+```
+
+#### WMI – win32_OperatingSystem
+
+- Retrieves OS details via WMI
+    
+- Useful for system replication & testing
+    
+
+```
+Get-WmiObject -Class win32_OperatingSystem
+```
+
+### Installed Updates
+
+#### Get-Hotfix
+
+- Lists installed Windows updates (KBs)
+    
+
+```
+Get-Hotfix
+```
+
+### Defender Information
+
+- Displays Defender-related services
+    
+
+```
+Get-Service | Where-Object DisplayName -like '*Defender*'
+```
+
+## File Information
+
+### Searching Text in Files
+
+- Searches recursively for text patterns
+    
+
+```
+Get-ChildItem -Recurse *.* | Select-String -Pattern "SEARCH_STR"
+```
+
+### File Permissions (ACL)
+
+- Displays file/folder access rights
+    
+
+```
+Get-Acl file.txt
+```
+
+### File Hashes
+
+- Generates file hash for integrity checking
+    
+
+```
+Get-FileHash file.txt
+```
+
+### Core Security Insight
+
+> System, update, and permission enumeration is a **critical step in privilege escalation and attack planning**.
+
+---
+
+## PowerShell Scripting
+
+### PowerShell ISE
+
+- GUI-based PowerShell environment
+    
+- Used to **write, run, test, and debug scripts**
+    
+- Ideal for beginners and scripting
+    
+
+### PowerShell Scripts
+
+- Text files with **.ps1** extension
+    
+- Used for **automation**
+    
+
+#### Common Use Cases
+
+- System management (users, files, disks)
+    
+- Network configuration
+    
+- Data processing & reporting
+    
+- Software deployment & testing
+    
+
+### Control Structures
+
+#### Variables
+
+- Store and manipulate data
+    
+
+```
+$name = "John Doe"
+$age = 30
+$firstName, $lastName = "John", "Doe"
+```
+
+#### Conditions
+
+##### If–Else
+
+```
+if ($age -gt 18) { "Adult" } else { "Kid" }
+```
+
+##### Switch–Case
+
+- Used for multiple conditions
+    
+
+```
+switch ($dayOfWeek) { "Monday" { ... } Default { ... } }
+```
+
+### Loops
+
+#### For
+
+```
+for ($i=1; $i -le 10; $i++) { $i }
+```
+
+#### While
+
+```
+while ($i -le 10) { $i; $i++ }
+```
+
+#### Do-While
+
+```
+do { $i; $i++ } while ($i -le 10)
+```
+
+#### Foreach
+
+```
+foreach ($name in $names) { $name }
+```
+
+### Writing & Saving Scripts
+
+- Write scripts in **PowerShell ISE**
+    
+- Save as **.ps1** file
+    
+- Execute after setting execution policy
+    
+
+## PowerShell Gallery
+
+- Central repository for PowerShell modules
+    
+- Contains Microsoft + community scripts
+    
+- Use with caution (security risk)
+    
+
+### Searching Modules
+
+```
+Find-Module -Name SysInternals
+```
+
+### Installing Modules
+
+```
+Install-Module -Name SysInternals
+```
+
+(NuGet may be installed automatically)
+
+### Core Security Insight
+
+> PowerShell scripts are powerful automation tools and are **commonly abused by attackers for living-off-the-land attacks**.
+
+---
+
+`Now here we are done with the windows fundamentals section and hence the OS Fundamentals module.
